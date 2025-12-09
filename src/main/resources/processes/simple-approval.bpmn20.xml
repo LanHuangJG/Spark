@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:flowable="http://flowable.org/bpmn"
+             targetNamespace="http://www.flowable.org/processdef">
+
+    <process id="simpleApproval" name="简单审批流程" isExecutable="true">
+
+        <!-- 开始事件 -->
+        <startEvent id="start" />
+
+        <!-- 用户任务：填写申请 -->
+        <userTask id="applyTask" name="填写申请"
+                  flowable:assignee="${applicant}" />
+
+        <!-- 用户任务：领导审批 -->
+        <userTask id="approveTask" name="领导审批"
+                  flowable:assignee="${approver}" />
+
+        <!-- 结束事件 -->
+        <endEvent id="end" />
+
+        <!-- 连接线 -->
+        <sequenceFlow id="flow1" sourceRef="start" targetRef="applyTask" />
+        <sequenceFlow id="flow2" sourceRef="applyTask" targetRef="approveTask" />
+        <sequenceFlow id="flow3" sourceRef="approveTask" targetRef="end" />
+
+    </process>
+</definitions>
