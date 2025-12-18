@@ -14,10 +14,6 @@ spring:
       chat:
         options:
           model: qwen-flash
-knife4j:
-  enable: true
-  setting:
-    language: zh_cn
 mybatis-plus:
   global-config:
     banner: false
